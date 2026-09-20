@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="薛子玥的个人主页 · Personal homepage of Xue Ziyue">
+<title>薛子玥 · 个人主页</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+/* ============================================================
+   设计体系：学者风 —— 墨色 hero · 宣纸底色 · 金色点缀 · 朱砂印章
+   ============================================================ */
+:root{
+  --paper:#F5F1E7;
+  --paper-2:#EBE4D3;
+  --ink:#1E2B29;
+  --ink-2:#293B38;
+  --ink-3:#33473F;
+  --text:#26302D;
+  --muted:#707A74;
+  --gold:#A9844F;
+  --gold-soft:#C7A76C;
+  --seal:#B23A2F;
+  --line:rgba(38,48,45,.14);
+  --line-light:rgba(245,241,231,.22);
+  --serif:"Noto Serif SC","Songti SC","SimSun","STSong",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+/* 无障碍跳转链接 */
+.skip-link{
+  position:fixed;top:-60px;left:16px;z-index:200;
+  background:var(--ink);color:var(--paper);
+  padding:10px 16px;font-size:14px;transition:top .2s ease;
+}
+.skip-link:focus{top:12px;}
+
+/* ============ 页头 ============ */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(245,241,231,.92);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  max-width:1180px;margin:0 auto;padding:0 28px;
+  height:70px;display:flex;align-items:center;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.seal{
+  width:40px;height:40px;border-radius:5px;flex:none;
+  box-shadow:0 2px 6px rgba(178,58,47,.35);
+}
+.brand-text{display:flex;flex-direction:column;line-height:1.2;}
+.brand-name{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:.14em;}
+.brand-sub{font-size:9px;letter-spacing:.32em;color:var(--muted);text-transform:uppercase;}
+
+.site-nav{margin-left:auto;display:flex;gap:6px;}
+.nav-link{
+  position:relative;padding:10px 16px;font-size:15px;color:var(--muted);
+  letter-spacing:.08em;transition:color .2s ease;
+}
+.nav-link::after{
+  content:"";position:absolute;left:16px;right:16px;bottom:4px;height:2px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;
+  transition:transform .25s ease;
+}
+.nav-link:hover{color:var(--text);}
+.nav-link.active{color:var(--text);font-weight:500;}
+.nav-link.active::after{transform:scaleX(1);}
+
+/* 语言切换 */
+.lang-switch{
+  display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;flex:none;
+}
+.lang-btn{
+  border:0;background:transparent;padding:7px 14px;font-size:13px;letter-spacing:.1em;
+  color:var(--muted);transition:background .2s ease,color .2s ease;
+}
+.lang-btn.active{background:var(--ink);color:var(--paper);}
+
+/* 移动端菜单按钮 */
+.menu-btn{
+  display:none;margin-left:auto;background:transparent;border:1px solid var(--line);
+  border-radius:4px;width:44px;height:44px;align-items:center;justify-content:center;
+}
+.menu-btn svg{width:20px;height:20px;stroke:var(--text);}
+
+/* ============ 通用页面结构 ============ */
+.page{display:none;}
+.page.active{display:block;animation:pageIn .55s ease both;}
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(14px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.section{padding:96px 0;}
+.section-inner{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+.page-head{max-width:1180px;margin:0 auto;padding:88px 28px 0;}
+.eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);
+}
+.eyebrow-line{width:44px;height:1px;background:var(--gold);flex:none;}
+.page-title{
+  font-family:var(--serif);font-weight:900;font-size:clamp(34px,4.6vw,52px);
+  letter-spacing:.12em;margin:18px 0 12px;
+}
+.page-lead{max-width:640px;color:var(--muted);font-size:16px;}
+.block-title{
+  font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:.1em;
+  padding-bottom:14px;margin-bottom:26px;position:relative;
+}
+.block-title::after{
+  content:"";position:absolute;left:0;bottom:0;width:46px;height:2px;background:var(--gold);
+}
+.tag{
+  display:inline-block;padding:3px 12px;border:1px solid var(--line);border-radius:999px;
+  font-size:12px;letter-spacing:.06em;color:var(--muted);
+}
+
+/* ============ 首页 · Hero ============ */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(1100px 600px at 82% -10%, rgba(199,167,108,.16), transparent 60%),
+    linear-gradient(160deg,var(--ink) 0%,var(--ink-2) 55%,var(--ink-3) 100%);
+  color:var(--paper);
+}
+.hero-vtext{
+  position:absolute;left:26px;top:50%;transform:translateY(-50%);
+  writing-mode:vertical-rl;letter-spacing:.5em;font-size:12px;
+  color:rgba(245,241,231,.38);font-family:var(--serif);
+}
+.hero-inner{
+  max-width:1180px;margin:0 auto;padding:110px 28px 120px;
+  display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;
+}
+.hero-name{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(54px,7.4vw,96px);line-height:1.12;letter-spacing:.06em;margin:20px 0 6px;
+}
+.hero-school{
+  font-size:19px;letter-spacing:.14em;color:var(--gold-soft);font-weight:500;
+}
+.hero-rule{width:64px;height:2px;background:var(--gold);margin:26px 0;}
+.hero-intro{
+  max-width:520px;color:rgba(245,241,231,.82);font-size:16px;font-weight:300;
+}
+.hero-chips{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 36px;}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 16px;border:1px solid var(--line-light);border-radius:999px;
+  font-size:13.5px;color:rgba(245,241,231,.88);
+}
+.chip svg{width:15px;height:15px;stroke:var(--gold-soft);flex:none;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 30px;font-size:15px;letter-spacing:.12em;border-radius:2px;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .15s ease;
+}
+.btn:active{transform:translateY(1px);}
+.btn-gold{background:var(--gold);color:var(--paper);}
+.btn-gold:hover{background:var(--gold-soft);}
+.btn-ghost{border:1px solid var(--line-light);color:var(--paper);}
+.btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft);}
+
+.hero-figure{position:relative;max-width:430px;justify-self:end;}
+.hero-figure::before{
+  content:"";position:absolute;inset:-18px 18px 18px -18px;
+  border:1px solid rgba(199,167,108,.5);z-index:0;
+}
+.hero-figure img{
+  position:relative;z-index:1;width:100%;aspect-ratio:3/4;object-fit:cover;
+  border-radius:2px;box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+.seal-big{
+  position:absolute;z-index:2;right:-26px;bottom:-26px;width:86px;height:86px;
+  filter:drop-shadow(0 6px 14px rgba(178,58,47,.45));
+}
+
+/* ============ 首页 · 关键词 ============ */
+.keywords{background:var(--paper);}
+.keywords-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+}
+.kw-card{
+  background:var(--paper-2);border:1px solid var(--line);border-top:3px solid var(--gold);
+  padding:34px 30px;border-radius:2px;transition:transform .25s ease,box-shadow .25s ease;
+}
+.kw-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(30,43,41,.08);}
+.kw-card .kw-glyph{
+  font-family:var(--serif);font-weight:900;font-size:15px;color:var(--gold);
+  letter-spacing:.3em;display:block;margin-bottom:14px;
+}
+.kw-card h3{font-family:var(--serif);font-weight:700;font-size:21px;letter-spacing:.1em;margin-bottom:8px;}
+.kw-card p{color:var(--muted);font-size:14.5px;font-weight:300;}
+
+/* ============ 关于 ============ */
+.about-body{padding:64px 0 96px;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.edu-item{
+  border-left:2px solid var(--gold);padding:6px 0 6px 26px;margin-bottom:30px;
+}
+.edu-item h4{font-family:var(--serif);font-weight:700;font-size:21px;letter-spacing:.08em;}
+.edu-dept{color:var(--muted);font-size:15px;margin:6px 0 10px;}
+.edu-major{color:var(--text);font-size:14.5px;margin-bottom:10px;}
+.interests-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.int-card{
+  border:1px solid var(--line);border-radius:2px;padding:22px 22px;
+  background:#fffdf7;transition:border-color .2s ease;
+}
+.int-card:hover{border-color:var(--gold);}
+.int-card h5{font-family:var(--serif);font-weight:700;font-size:16.5px;letter-spacing:.06em;margin-bottom:6px;}
+.int-card p{font-size:13.5px;color:var(--muted);font-weight:300;}
+.lang-list{display:flex;flex-wrap:wrap;gap:12px;}
+.exp-card{
+  border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:2px;padding:26px 28px;background:#fffdf7;margin-bottom:44px;
+}
+.exp-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:6px;}
+.exp-head h4{font-family:var(--serif);font-weight:700;font-size:20px;letter-spacing:.06em;}
+.exp-role{color:var(--gold);font-size:14px;letter-spacing:.08em;margin-bottom:12px;}
+.exp-desc{color:var(--muted);font-size:14.5px;font-weight:300;max-width:860px;}
+.lang-chip{
+  display:inline-flex;align-items:baseline;gap:10px;
+  border:1px solid var(--line);border-radius:2px;padding:12px 20px;background:#fffdf7;
+}
+.lang-chip .lc-name{font-family:var(--serif);font-weight:600;font-size:16px;}
+.lang-chip .lc-level{font-size:12.5px;color:var(--muted);letter-spacing:.05em;}
+.about-note{
+  margin-top:56px;padding:18px 24px;border:1px dashed var(--line);
+  color:var(--muted);font-size:13.5px;border-radius:2px;background:transparent;
+}
+
+/* ============ 作品 ============ */
+.works-body{padding:56px 0 96px;background:var(--paper-2);border-top:1px solid var(--line);}
+.gallery{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:30px;
+}
+.g-item{grid-column:span 6;}
+.g-item.wide{grid-column:span 7;}
+.g-item.narrow{grid-column:span 5;}
+.g-media{overflow:hidden;border-radius:2px;position:relative;}
+.g-media img{
+  width:100%;transition:transform .6s cubic-bezier(.22,.61,.36,1);
+}
+.g-item:hover .g-media img{transform:scale(1.045);}
+.g-media.landscape img{aspect-ratio:4/3;object-fit:cover;}
+.g-media.portrait img{aspect-ratio:3/4;object-fit:cover;}
+.g-caption{padding:16px 4px 0;}
+.g-caption h3{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:.08em;margin-bottom:6px;}
+.g-caption p{font-size:14px;color:var(--muted);font-weight:300;max-width:520px;}
+
+/* ============ 生活 ============ */
+.life-body{padding:64px 0 96px;}
+.life-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+  padding:44px 0;border-bottom:1px solid var(--line);
+}
+.life-row:first-child{padding-top:8px;}
+.life-row:last-child{border-bottom:0;}
+.life-row:nth-child(even) .life-media{order:2;}
+.life-media img{border-radius:2px;box-shadow:0 18px 44px rgba(30,43,41,.14);}
+.life-text h3{font-family:var(--serif);font-weight:700;font-size:26px;letter-spacing:.08em;margin-bottom:14px;}
+.life-text p{color:var(--muted);font-size:15.5px;font-weight:300;max-width:480px;}
+
+/* ============ 页脚 ============ */
+.site-footer{
+  background:var(--ink);color:var(--paper);text-align:center;padding:64px 28px 54px;
+}
+.footer-name{
+  font-family:var(--serif);font-weight:700;font-size:26px;letter-spacing:.24em;margin-bottom:10px;
+}
+.footer-school{color:var(--gold-soft);font-size:14px;letter-spacing:.18em;margin-bottom:26px;}
+.footer-meta{color:rgba(245,241,231,.55);font-size:12.5px;letter-spacing:.06em;}
+.footer-meta .dot{margin:0 10px;}
+
+/* ============ 响应式 ============ */
+@media (max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:64px;}
+  .hero-figure{max-width:400px;justify-self:start;}
+  .hero-vtext{display:none;}
+  .about-grid{grid-template-columns:1fr;gap:52px;}
+  .life-row{grid-template-columns:1fr;gap:28px;}
+  .life-row:nth-child(even) .life-media{order:0;}
+  .g-item,.g-item.wide,.g-item.narrow{grid-column:span 12;}
+  .g-media.portrait img{aspect-ratio:4/3;}
+}
+@media (max-width:760px){
+  .header-inner{height:62px;padding:0 18px;}
+  .site-nav{
+    display:none;position:absolute;top:62px;left:0;right:0;
+    background:var(--paper);border-bottom:1px solid var(--line);
+    flex-direction:column;padding:12px 18px 18px;gap:2px;
+    box-shadow:0 16px 30px rgba(30,43,41,.1);
+  }
+  .site-nav.open{display:flex;}
+  .nav-link{padding:14px 8px;font-size:16px;border-bottom:1px solid var(--line);}
+  .nav-link:last-child{border-bottom:0;}
+  .nav-link::after{display:none;}
+  .menu-btn{display:flex;}
+  .brand-sub{display:none;}
+  .section{padding:72px 0;}
+  .hero-inner{padding:76px 18px 84px;}
+  .hero-name{letter-spacing:.02em;}
+  .keywords-grid{grid-template-columns:1fr;gap:18px;}
+  .interests-grid{grid-template-columns:1fr;}
+  .page-head{padding:64px 18px 0;}
+  .section-inner,.hero-inner{padding-left:18px;padding-right:18px;}
+  .hero-cta .btn{flex:1;min-width:150px;}
+  .footer-meta{line-height:2;}
+}
+
+/* 减少动效偏好 */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="a11y.skip">跳到主要内容</a>
+
+<!-- ===================== 页头 ===================== -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a class="brand" href="#/home" aria-label="Home">
+      <svg class="seal" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="3" y="3" width="58" height="58" rx="6" fill="#B23A2F"/>
+        <rect x="7" y="7" width="50" height="50" rx="3" fill="none" stroke="#F5F1E7" stroke-width="1.6" opacity=".7"/>
+        <text x="32" y="45" text-anchor="middle" font-size="36" font-weight="700"
+              font-family="'Noto Serif SC','Songti SC',serif" fill="#F5F1E7">薛</text>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name" data-i18n="brand.name">薛子玥</span>
+        <span class="brand-sub" data-i18n="brand.sub">XUE ZIYUE</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+      <a class="nav-link active" data-page="home" href="#/home"><span data-i18n="nav.home">首页</span></a>
+      <a class="nav-link" data-page="about" href="#/about"><span data-i18n="nav.about">关于</span></a>
+      <a class="nav-link" data-page="works" href="#/works"><span data-i18n="nav.works">作品</span></a>
+      <a class="nav-link" data-page="life" href="#/life"><span data-i18n="nav.life">生活</span></a>
+    </nav>
+
+    <div class="lang-switch" role="group" aria-label="Language switch">
+      <button class="lang-btn" data-lang="zh" type="button" aria-pressed="true">中文</button>
+      <button class="lang-btn" data-lang="en" type="button" aria-pressed="false">EN</button>
+    </div>
+
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===================== 首页 ===================== -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <span class="hero-vtext" data-i18n="hero.vtext">上海交通大学 外国语学院</span>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="home.eyebrow">你好，欢迎来到我的个人主页</span></p>
+        <h1 class="hero-name" data-i18n="home.name">薛子玥</h1>
+        <p class="hero-school" data-i18n="home.school">上海交通大学 · 外国语学院</p>
+        <div class="hero-rule"></div>
+        <!-- 自我介绍：如需修改，在下方 i18n 数据 home.intro 中调整 -->
+        <p class="hero-intro" data-i18n="home.intro">上海交通大学外国语学院英语专业本科生，来自江苏南京。热爱语言、文学与跨文化对话，曾在媒体单位实习，参与《Nanjing at Night》系列城市文旅宣传视频的中英文脚本创作。</p>
+        <ul class="hero-chips">
+          <li class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <span data-i18n="chip.school">上海交通大学 外国语学院</span>
+          </li>
+          <li class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <span data-i18n="chip.city">上海</span>
+          </li>
+          <li class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <span data-i18n="chip.home">家乡 · 江苏南京</span>
+          </li>
+          <li class="chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <span data-i18n="chip.email">2837035061@qq.com</span>
+          </li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#/works" data-i18n="home.cta.works">查看作品</a>
+          <a class="btn btn-ghost" href="#/about" data-i18n="home.cta.about">了解更多</a>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <img src="https://aka.doubaocdn.com/s/UaVkGGwp7i" data-i18n-alt="alt.hero" alt="书桌与灯光" loading="eager">
+        <svg class="seal-big" viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="3" y="3" width="58" height="58" rx="6" fill="#B23A2F"/>
+          <rect x="7.5" y="7.5" width="49" height="49" rx="3" fill="none" stroke="#F5F1E7" stroke-width="1.4" opacity=".7"/>
+          <text x="32" y="44" text-anchor="middle" font-size="30" font-weight="700"
+                font-family="'Noto Serif SC','Songti SC',serif" fill="#F5F1E7">子玥</text>
+        </svg>
+      </figure>
+    </div>
+  </div>
+
+  <div class="keywords section">
+    <div class="section-inner">
+      <div class="keywords-grid">
+        <article class="kw-card">
+          <span class="kw-glyph" data-i18n="kw1.glyph">语</span>
+          <h3 data-i18n="kw1.title">语言</h3>
+          <p data-i18n="kw1.desc">沉浸于外语学习，在声音与文字之间，探索另一种理解世界的方式。</p>
+        </article>
+        <article class="kw-card">
+          <span class="kw-glyph" data-i18n="kw2.glyph">文</span>
+          <h3 data-i18n="kw2.title">文化</h3>
+          <p data-i18n="kw2.desc">在文学与翻译中穿行，试着读懂不同文化各自珍视的东西。</p>
+        </article>
+        <article class="kw-card">
+          <span class="kw-glyph" data-i18n="kw3.glyph">界</span>
+          <h3 data-i18n="kw3.title">世界</h3>
+          <p data-i18n="kw3.desc">希望用语言作舟，去看更远的地方，认识更多的人。</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 关于 ===================== -->
+<section class="page" id="page-about">
+  <header class="page-head">
+    <p class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="about.eyebrow">了解我</span></p>
+    <h2 class="page-title" data-i18n="about.title">关于我</h2>
+    <p class="page-lead" data-i18n="about.lead">上海交通大学外国语学院英语专业在读，来自江苏南京。</p>
+  </header>
+
+  <div class="about-body section-inner">
+    <div class="about-grid">
+      <div>
+        <h3 class="block-title" data-i18n="about.edu.title">教育经历</h3>
+        <div class="edu-item">
+          <h4 data-i18n="about.edu.school">上海交通大学</h4>
+          <p class="edu-dept" data-i18n="about.edu.dept">外国语学院 · School of Foreign Languages</p>
+          <p class="edu-major" data-i18n="about.edu.major">英语专业 · 2023.9 – 至今</p>
+          <span class="tag" data-i18n="about.edu.note">本科在读 · 全日制</span>
+        </div>
+        <div class="edu-item">
+          <h4 data-i18n="about.edu.hs.school">南京市金陵中学</h4>
+          <p class="edu-dept" data-i18n="about.edu.hs.period">2020.9 – 2023.7 · 高中</p>
+        </div>
+
+        <h3 class="block-title" data-i18n="about.skills.title">语言能力</h3>
+        <div class="lang-list">
+          <span class="lang-chip"><span class="lc-name" data-i18n="skills.l1.name">中文</span><span class="lc-level" data-i18n="skills.l1.level">母语</span></span>
+          <span class="lang-chip"><span class="lc-name" data-i18n="skills.l2.name">英语</span><span class="lc-level" data-i18n="skills.l2.level">专业在读</span></span>
+          <span class="lang-chip"><span class="lc-name" data-i18n="skills.l3.name">其他语言</span><span class="lc-level" data-i18n="skills.l3.level">待补充</span></span>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="block-title" data-i18n="about.interests.title">兴趣领域</h3>
+        <div class="interests-grid">
+          <article class="int-card">
+            <h5 data-i18n="int1.title">翻译研究</h5>
+            <p data-i18n="int1.desc">关注文学翻译中的文化转换、风格再现与再创造。</p>
+          </article>
+          <article class="int-card">
+            <h5 data-i18n="int2.title">比较文学</h5>
+            <p data-i18n="int2.desc">在不同语言与文本之间寻找对话的可能。</p>
+          </article>
+          <article class="int-card">
+            <h5 data-i18n="int3.title">跨文化交流</h5>
+            <p data-i18n="int3.desc">相信语言是理解彼此、连接世界的桥梁。</p>
+          </article>
+          <article class="int-card">
+            <h5 data-i18n="int4.title">语言学习</h5>
+            <p data-i18n="int4.desc">持续学习，保持对世界与表达的好奇。</p>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="block-title" data-i18n="about.exp.title">实习经历</h3>
+    <div class="exp-card">
+      <div class="exp-head">
+        <h4 data-i18n="about.exp.org">新华报业传媒集团</h4>
+        <span class="tag" data-i18n="about.exp.period">2026.7 – 2026.9</span>
+      </div>
+      <p class="exp-role" data-i18n="about.exp.role">内容创作实习生 · 中英文脚本撰写</p>
+      <p class="exp-desc" data-i18n="about.exp.desc">参与《Nanjing at Night》系列城市文旅宣传视频的内容创作，完成燕子矶夜市、长江传奇游轮等主题的中英文脚本撰写与多轮迭代优化；遵循视频传播“画面优先”的原则，将南京历史文化、市井烟火、长江生态融入叙事，并对接文旅部门需求调整表达风格。</p>
+    </div>
+
+    <p class="about-note" data-i18n="about.note">以上信息根据本人实习登记表整理。</p>
+  </div>
+</section>
+
+<!-- ===================== 作品 ===================== -->
+<section class="page" id="page-works">
+  <header class="page-head">
+    <p class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="works.eyebrow">图集</span></p>
+    <h2 class="page-title" data-i18n="works.title">图片与文字</h2>
+    <p class="page-lead" data-i18n="works.lead">图片与文字作品。曾参与《Nanjing at Night》系列城市文旅视频的中英文脚本创作。</p>
+  </header>
+
+  <div class="works-body">
+    <div class="section-inner">
+      <div class="gallery">
+        <figure class="g-item wide">
+          <div class="g-media landscape">
+            <img src="https://aka.doubaocdn.com/s/t2jYvYxIfF" data-i18n-alt="alt.campus" alt="校园秋日的林荫道" loading="lazy">
+          </div>
+          <figcaption class="g-caption">
+            <h3 data-i18n="w1.title">校园四季</h3>
+            <p data-i18n="w1.desc">梧桐叶落，光影斑驳，校园的秋天总是很慢。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item narrow">
+          <div class="g-media landscape">
+            <img src="https://aka.doubaocdn.com/s/DPMmKvVY8n" data-i18n-alt="alt.library" alt="图书馆的书架与阅读者" loading="lazy">
+          </div>
+          <figcaption class="g-caption">
+            <h3 data-i18n="w2.title">书页之间</h3>
+            <p data-i18n="w2.desc">图书馆的午后，时间在纸页间安静地流淌。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item narrow">
+          <div class="g-media portrait">
+            <img src="https://aka.doubaocdn.com/s/XxqzASDUSR" data-i18n-alt="alt.city" alt="黄昏的老洋房墙面" loading="lazy">
+          </div>
+          <figcaption class="g-caption">
+            <h3 data-i18n="w3.title">城市光影</h3>
+            <p data-i18n="w3.desc">老洋房的墙面，藏着这座城市温柔的黄昏。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="g-item wide">
+          <div class="g-media portrait">
+            <img src="https://aka.doubaocdn.com/s/SLQARF6KcV" data-i18n-alt="alt.penink" alt="钢笔与手写稿纸" loading="lazy">
+          </div>
+          <figcaption class="g-caption">
+            <h3 data-i18n="w4.title">笔墨之间</h3>
+            <p data-i18n="w4.desc">手写的温度，是键盘无法替代的。</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 生活 ===================== -->
+<section class="page" id="page-life">
+  <header class="page-head">
+    <p class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="life.eyebrow">日常</span></p>
+    <h2 class="page-title" data-i18n="life.title">生活点滴</h2>
+    <p class="page-lead" data-i18n="life.lead">一些日常的片段，与想说的话。</p>
+  </header>
+
+  <div class="life-body section-inner">
+    <div class="life-row">
+      <div class="life-media">
+        <img src="https://aka.doubaocdn.com/s/lPszTXKvOj" data-i18n-alt="alt.coffee" alt="窗边的拿铁与书" loading="lazy">
+      </div>
+      <div class="life-text">
+        <h3 data-i18n="l1.title">雨天咖啡馆</h3>
+        <p data-i18n="l1.desc">一杯拿铁，一本摊开的书，窗外的雨把世界变得安静。这样的下午，时间走得刚刚好。</p>
+      </div>
+    </div>
+    <div class="life-row">
+      <div class="life-media">
+        <img src="https://aka.doubaocdn.com/s/qLoTrVh82z" data-i18n-alt="alt.trip" alt="山间晨雾中的旅人" loading="lazy">
+      </div>
+      <div class="life-text">
+        <h3 data-i18n="l2.title">山间晨雾</h3>
+        <p data-i18n="l2.desc">清晨的雾还没有散，路还很长，风景很好。一个人的旅途，安静而自由。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== 页脚 ===================== -->
+<footer class="site-footer">
+  <p class="footer-name" data-i18n="brand.name">薛子玥</p>
+  <p class="footer-school" data-i18n="footer.note">上海交通大学 · 外国语学院</p>
+  <p class="footer-meta">
+    <span data-i18n="footer.rights">© <span id="year"></span> 薛子玥 · 保留所有权利</span><span class="dot">·</span><span data-i18n="footer.draft">个人主页 · 内容陆续更新</span>
+  </p>
+</footer>
+
+<script>
+/* ============================================================
+   双语数据（在此替换为你的真实内容，zh 与 en 一一对应）
+   ============================================================ */
+var I18N = {
+  zh: {
+    "doc.title": "薛子玥 · 个人主页",
+    "a11y.skip": "跳到主要内容",
+    "brand.name": "薛子玥",
+    "brand.sub": "XUE ZIYUE",
+    "nav.home": "首页",
+    "nav.about": "关于",
+    "nav.works": "作品",
+    "nav.life": "生活",
+    "hero.vtext": "上海交通大学 外国语学院",
+    "home.eyebrow": "你好，欢迎来到我的个人主页",
+    "home.name": "薛子玥",
+    "home.school": "上海交通大学 · 外国语学院",
+    "home.intro": "上海交通大学外国语学院英语专业本科生，来自江苏南京。热爱语言、文学与跨文化对话，曾在媒体单位实习，参与《Nanjing at Night》系列城市文旅宣传视频的中英文脚本创作。",
+    "chip.school": "上海交通大学 外国语学院",
+    "chip.city": "上海",
+    "chip.home": "家乡 · 江苏南京",
+    "chip.email": "2837035061@qq.com",
+    "home.cta.works": "查看作品",
+    "home.cta.about": "了解更多",
+    "kw1.glyph": "语", "kw1.title": "语言",
+    "kw1.desc": "沉浸于外语学习，在声音与文字之间，探索另一种理解世界的方式。",
+    "kw2.glyph": "文", "kw2.title": "文化",
+    "kw2.desc": "在文学与翻译中穿行，试着读懂不同文化各自珍视的东西。",
+    "kw3.glyph": "界", "kw3.title": "世界",
+    "kw3.desc": "希望用语言作舟，去看更远的地方，认识更多的人。",
+    "about.eyebrow": "了解我",
+    "about.title": "关于我",
+    "about.lead": "上海交通大学外国语学院英语专业在读，来自江苏南京。",
+    "about.edu.title": "教育经历",
+    "about.edu.school": "上海交通大学",
+    "about.edu.dept": "外国语学院 · School of Foreign Languages",
+    "about.edu.major": "英语专业 · 2023.9 – 至今",
+    "about.edu.note": "本科在读 · 全日制",
+    "about.edu.hs.school": "南京市金陵中学",
+    "about.edu.hs.period": "2020.9 – 2023.7 · 高中",
+    "about.skills.title": "语言能力",
+    "skills.l1.name": "中文", "skills.l1.level": "母语",
+    "skills.l2.name": "英语", "skills.l2.level": "专业在读",
+    "skills.l3.name": "其他语言", "skills.l3.level": "待补充",
+    "about.interests.title": "兴趣领域",
+    "int1.title": "翻译研究", "int1.desc": "关注文学翻译中的文化转换、风格再现与再创造。",
+    "int2.title": "比较文学", "int2.desc": "在不同语言与文本之间寻找对话的可能。",
+    "int3.title": "跨文化交流", "int3.desc": "相信语言是理解彼此、连接世界的桥梁。",
+    "int4.title": "语言学习", "int4.desc": "持续学习，保持对世界与表达的好奇。",
+    "about.note": "以上信息根据本人实习登记表整理。",
+    "about.exp.title": "实习经历",
+    "about.exp.org": "新华报业传媒集团",
+    "about.exp.period": "2026.7 – 2026.9",
+    "about.exp.role": "内容创作实习生 · 中英文脚本撰写",
+    "about.exp.desc": "参与《Nanjing at Night》系列城市文旅宣传视频的内容创作，完成燕子矶夜市、长江传奇游轮等主题的中英文脚本撰写与多轮迭代优化；遵循视频传播“画面优先”的原则，将南京历史文化、市井烟火、长江生态融入叙事，并对接文旅部门需求调整表达风格。",
+    "works.eyebrow": "图集",
+    "works.title": "图片与文字",
+    "works.lead": "图片与文字作品。曾参与《Nanjing at Night》系列城市文旅视频的中英文脚本创作。",
+    "w1.title": "校园四季", "w1.desc": "梧桐叶落，光影斑驳，校园的秋天总是很慢。",
+    "w2.title": "书页之间", "w2.desc": "图书馆的午后，时间在纸页间安静地流淌。",
+    "w3.title": "城市光影", "w3.desc": "老洋房的墙面，藏着这座城市温柔的黄昏。",
+    "w4.title": "笔墨之间", "w4.desc": "手写的温度，是键盘无法替代的。",
+    "life.eyebrow": "日常",
+    "life.title": "生活点滴",
+    "life.lead": "一些日常的片段，与想说的话。",
+    "l1.title": "雨天咖啡馆", "l1.desc": "一杯拿铁，一本摊开的书，窗外的雨把世界变得安静。这样的下午，时间走得刚刚好。",
+    "l2.title": "山间晨雾", "l2.desc": "清晨的雾还没有散，路还很长，风景很好。一个人的旅途，安静而自由。",
+    "footer.note": "上海交通大学 · 外国语学院",
+    "footer.rights": "© <span id='year'>2026</span> 薛子玥 · 保留所有权利",
+    "footer.draft": "个人主页 · 内容陆续更新",
+    "alt.hero": "书桌与灯光",
+    "alt.campus": "校园秋日的林荫道",
+    "alt.library": "图书馆的书架与阅读者",
+    "alt.city": "黄昏的老洋房墙面",
+    "alt.penink": "钢笔与手写稿纸",
+    "alt.coffee": "窗边的拿铁与书",
+    "alt.trip": "山间晨雾中的旅人"
+  },
+  en: {
+    "doc.title": "Xue Ziyue · Personal Page",
+    "a11y.skip": "Skip to main content",
+    "brand.name": "Xue Ziyue",
+    "brand.sub": "XUE ZIYUE",
+    "nav.home": "Home",
+    "nav.about": "About",
+    "nav.works": "Works",
+    "nav.life": "Life",
+    "hero.vtext": "SHANGHAI JIAO TONG UNIVERSITY · SFL",
+    "home.eyebrow": "Hello, welcome to my page",
+    "home.name": "Xue Ziyue",
+    "home.school": "Shanghai Jiao Tong University · School of Foreign Languages",
+    "home.intro": "An English major at the School of Foreign Languages, Shanghai Jiao Tong University, originally from Nanjing, Jiangsu. Curious about language, literature and cross-cultural dialogue — fond of watching two cultures light each other up through translation. During an internship with a media group, I wrote and iterated bilingual scripts for the 'Nanjing at Night' city-tourism video series.",
+    "chip.school": "SJTU · School of Foreign Languages",
+    "chip.city": "Shanghai",
+    "chip.home": "From Nanjing, Jiangsu",
+    "chip.email": "2837035061@qq.com",
+    "home.cta.works": "View Works",
+    "home.cta.about": "Learn More",
+    "kw1.glyph": "LA", "kw1.title": "Language",
+    "kw1.desc": "Immersed in language learning — exploring another way of seeing the world through sound and script.",
+    "kw2.glyph": "CU", "kw2.title": "Culture",
+    "kw2.desc": "Wandering through literature and translation, trying to understand what different cultures hold dear.",
+    "kw3.glyph": "WO", "kw3.title": "World",
+    "kw3.desc": "Hoping language can take me further — to see more places and meet more people.",
+    "about.eyebrow": "Get to Know Me",
+    "about.title": "About Me",
+    "about.lead": "An English major at SJTU's School of Foreign Languages, from Nanjing, Jiangsu.",
+    "about.edu.title": "Education",
+    "about.edu.school": "Shanghai Jiao Tong University",
+    "about.edu.dept": "School of Foreign Languages",
+    "about.edu.major": "English major · Sep 2023 – Present",
+    "about.edu.note": "Undergraduate · Full-time",
+    "about.edu.hs.school": "Nanjing Jinling High School",
+    "about.edu.hs.period": "Sep 2020 – Jul 2023 · High School",
+    "about.skills.title": "Languages",
+    "skills.l1.name": "Chinese", "skills.l1.level": "Native",
+    "skills.l2.name": "English", "skills.l2.level": "Major",
+    "skills.l3.name": "Others", "skills.l3.level": "TBD",
+    "about.interests.title": "Interests",
+    "int1.title": "Translation Studies", "int1.desc": "Cultural transfer, stylistic fidelity and re-creation in literary translation.",
+    "int2.title": "Comparative Literature", "int2.desc": "Finding dialogues across languages and texts.",
+    "int3.title": "Cross-cultural Communication", "int3.desc": "Believing language builds bridges between people.",
+    "int4.title": "Language Learning", "int4.desc": "Always learning, always curious about the world and its expressions.",
+    "about.note": "Information compiled from my internship registration form.",
+    "about.exp.title": "Internship",
+    "about.exp.org": "Xinhua Daily Media Group",
+    "about.exp.period": "Jul – Sep 2026",
+    "about.exp.role": "Content Creation Intern · Bilingual Scripts",
+    "about.exp.desc": "Contributed to the 'Nanjing at Night' city-tourism video series — writing and iterating bilingual scripts on themes from Yanziji Night Market to the Yangtze Legend cruise. Following a visual-first principle for video, I wove Nanjing's history, street life and Yangtze ecology into the storytelling, and tailored the tone to local tourism department needs.",
+    "works.eyebrow": "Gallery",
+    "works.title": "Images & Words",
+    "works.lead": "Images and words. I contributed bilingual scripts to the 'Nanjing at Night' city-tourism video series.",
+    "w1.title": "Campus in Seasons", "w1.desc": "Golden leaves and dappled light — autumn on campus moves slowly.",
+    "w2.title": "Between the Pages", "w2.desc": "Quiet afternoons in the library, time flowing gently between the pages.",
+    "w3.title": "Light & Shadow", "w3.desc": "On old villa walls, the city keeps its gentlest dusks.",
+    "w4.title": "Pen & Ink", "w4.desc": "The warmth of handwriting no keyboard can replace.",
+    "life.eyebrow": "Everyday",
+    "life.title": "Life Notes",
+    "life.lead": "Fragments of daily life, and a few words.",
+    "l1.title": "Rainy Café", "l1.desc": "A latte, an open book — rain outside makes the world quiet. Afternoons like this move at just the right pace.",
+    "l2.title": "Morning in the Hills", "l2.desc": "The mist lingers, the road is long, the view is fine. Traveling alone — quiet and free.",
+    "footer.note": "Shanghai Jiao Tong University · SFL",
+    "footer.rights": "© <span id='year'>2026</span> Xue Ziyue · All rights reserved",
+    "footer.draft": "Personal page · content under construction",
+    "alt.hero": "A quiet desk in morning light",
+    "alt.campus": "Campus avenue in autumn",
+    "alt.library": "Library shelves and a reader",
+    "alt.city": "Old villa wall at dusk",
+    "alt.penink": "Pen and handwritten pages",
+    "alt.coffee": "A latte and a book by the window",
+    "alt.trip": "A hiker in the morning mist"
+  }
+};
+
+/* ============================================================
+   状态与初始化
+   ============================================================ */
+var lang = 'zh';
+try {
+  lang = localStorage.getItem('zy-lang') || 'zh';
+} catch (e) { /* 隐私模式下忽略 */ }
+lang = (lang === 'en') ? 'en' : 'zh';
+
+var PAGES = ['home', 'about', 'works', 'life'];
+
+function t(key) {
+  return (I18N[lang] && I18N[lang][key]) || I18N.zh[key] || key;
+}
+
+function currentPage() {
+  var h = location.hash.replace(/^#\/?/, '');
+  return PAGES.indexOf(h) !== -1 ? h : 'home';
+}
+
+/* ============================================================
+   渲染：文本 + 图片 alt + 标题
+   ============================================================ */
+function renderTexts() {
+  document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n');
+    el.innerHTML = t(key);
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n-alt');
+    el.setAttribute('alt', t(key));
+  });
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    var active = btn.getAttribute('data-lang') === lang;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+  document.title = t('doc.title');
+  updateTitle();
+}
+
+function updateTitle() {
+  document.title = t('doc.title') + ' · ' + t('nav.' + currentPage());
+}
+
+/* ============================================================
+   路由
+   ============================================================ */
+function route() {
+  var page = currentPage();
+  document.querySelectorAll('.page').forEach(function (sec) {
+    sec.classList.toggle('active', sec.id === 'page-' + page);
+  });
+  document.querySelectorAll('.nav-link').forEach(function (link) {
+    link.classList.toggle('active', link.getAttribute('data-page') === page);
+  });
+  closeMenu();
+  window.scrollTo(0, 0);
+  updateTitle();
+}
+
+window.addEventListener('hashchange', route);
+
+/* ============================================================
+   语言切换
+   ============================================================ */
+document.querySelectorAll('.lang-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var next = btn.getAttribute('data-lang');
+    if (next === lang) return;
+    lang = next;
+    try { localStorage.setItem('zy-lang', lang); } catch (e) { /* 忽略 */ }
+    renderTexts();
+  });
+});
+
+/* ============================================================
+   移动端菜单
+   ============================================================ */
+var navEl = document.getElementById('siteNav');
+var menuBtn = document.getElementById('menuBtn');
+function closeMenu() {
+  navEl.classList.remove('open');
+  if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+}
+if (menuBtn) {
+  menuBtn.addEventListener('click', function () {
+    var open = navEl.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+}
+
+/* ============================================================
+   启动
+   ============================================================ */
+document.getElementById('year').textContent = String(new Date().getFullYear());
+renderTexts();
+route();
+</script>
+</body>
+</html>
